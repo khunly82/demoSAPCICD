@@ -3,8 +3,10 @@ name: Pipeline 1
 
 # ce qui va déclencher le pipepline
 on:
-    push:
-        branches: [main]
+    #push:
+        #branches:
+            #- main
+    workflow_dispatch:
 
 # ce que le pipeline va réaliser
 jobs:
@@ -15,7 +17,8 @@ jobs:
               run: echo "Hello world !!"
     job2:
         runs-on: windows-latest
-        needs: [job1]
+        needs: 
+            - job1
         steps:
             - name: My awesome step
               run: mkdir app
